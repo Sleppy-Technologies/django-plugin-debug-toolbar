@@ -10,27 +10,30 @@ from django_plugin_debug_toolbar import _inject_middleware
 class TestDjangoPluginDebugToolbar(TestCase):
     def test_simple_view_works(self):
         response = self.client.get("/")
-        assert response.status_code == 200
-        assert response.content == b"Hello world"
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.content, b"Hello world")
 
     def test_installed_apps_injected(self):
-        assert "debug_toolbar" in settings.INSTALLED_APPS
+        self.assertIn("debug_toolbar", settings.INSTALLED_APPS)
 
     def test_internal_ips_injected(self):
-        assert "127.0.0.1" in settings.INTERNAL_IPS
+        self.assertIn("127.0.0.1", settings.INTERNAL_IPS)
 
     def test_toolbar_middleware_injected(self):
-        assert settings.MIDDLEWARE == [
-            "django.middleware.locale.LocaleMiddleware",
-            "django.middleware.gzip.GZipMiddleware",
-            "debug_toolbar.middleware.DebugToolbarMiddleware",
-            "django.middleware.security.SecurityMiddleware",
-        ]
+        self.assertEqual(
+            settings.MIDDLEWARE,
+            [
+                "django.middleware.locale.LocaleMiddleware",
+                "django.middleware.gzip.GZipMiddleware",
+                "debug_toolbar.middleware.DebugToolbarMiddleware",
+                "django.middleware.security.SecurityMiddleware",
+            ],
+        )
 
     def test_debug_toolbar_panel_page_served(self):
         path = reverse(f"{APP_NAME}:render_panel")
         response = self.client.get(f"{path}?request_id=1&panel_id=SettingsPanel")
-        assert response.status_code == 200
+        self.assertEqual(response.status_code, 200)
 
 
 class TestToolbarMiddlewareInjection(TestCase):
