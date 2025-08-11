@@ -20,6 +20,3 @@ name = "testpypi"
 url = "https://test.pypi.org/simple/"
 publish-url = "https://test.pypi.org/legacy/"
 explicit = true
-
-[dependency-groups]
-dev = ["django-plugin-extensions>=0.1.1"]
