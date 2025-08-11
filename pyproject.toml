@@ -1,0 +1,25 @@
+[project]
+name = "django-plugin-debug-toolbar"
+version = "0.1.0"
+description = "Django plugin wrapping django-debug-toolbar"
+readme = "README.md"
+authors = [{ name = "Joel Sleppy", email = "joel@sleppytech.com" }]
+license = { text = "Apache-2.0" }
+classifiers = ["License :: OSI Approved :: Apache Software License"]
+dependencies = ["django", "djp", "django-debug-toolbar==6.*"]
+
+[project.entry-points.djp]
+django_plugin_debug_toolbar = "django_plugin_debug_toolbar"
+
+[build-system]
+requires = ["uv_build>=0.8.4,<0.9.0"]
+build-backend = "uv_build"
+
+[[tool.uv.index]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+publish-url = "https://test.pypi.org/legacy/"
+explicit = true
+
+[dependency-groups]
+dev = ["django-plugin-extensions>=0.1.1"]
