@@ -40,7 +40,7 @@ wheels = [
 
 [[package]]
 name = "django-plugin-debug-toolbar"
-version = "0.1.0"
+version = "0.1.1"
 source = { editable = "." }
 dependencies = [
     { name = "django" },
@@ -52,7 +52,7 @@ dependencies = [
 requires-dist = [
     { name = "django" },
     { name = "django-debug-toolbar", specifier = "==6.*" },
-    { name = "djp" },
+    { name = "djp", specifier = ">=0.3.1" },
 ]
 
 [[package]]

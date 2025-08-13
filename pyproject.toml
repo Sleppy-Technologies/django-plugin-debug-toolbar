@@ -1,12 +1,12 @@
 [project]
 name = "django-plugin-debug-toolbar"
-version = "0.1.0"
+version = "0.1.1"
 description = "Django plugin wrapping django-debug-toolbar"
 readme = "README.md"
 authors = [{ name = "Joel Sleppy", email = "joel@sleppytech.com" }]
 license = { text = "Apache-2.0" }
 classifiers = ["License :: OSI Approved :: Apache Software License"]
-dependencies = ["django", "djp", "django-debug-toolbar==6.*"]
+dependencies = ["django", "djp>=0.3.1", "django-debug-toolbar==6.*"]
 
 [project.entry-points.djp]
 django_plugin_debug_toolbar = "django_plugin_debug_toolbar"
